@@ -1,8 +1,8 @@
-/* ================= SITE CONFIG — edit these ================= */
+/* ================= SITE CONFIG: edit these ================= */
 const CONFIG = {
   // Paste the client's Facebook Page URL, e.g. "https://www.facebook.com/CoastlinePropertyHoldings"
   FACEBOOK_PAGE_URL: "",
-  // Business email — leave blank until confirmed
+  // Business email: leave blank until confirmed
   EMAIL: ""
 };
 /* ============================================================ */
@@ -90,7 +90,7 @@ if (fbUrl) {
         <small>Roofing contractor · Facebook</small>
         <div class="fb-post"><img src="images/shingles-crew-sm.jpg" alt=""><div class="fb-lines"><div class="ph"></div><div class="ph" style="width:70%"></div><div class="ph" style="width:45%"></div></div></div>
         <div class="fb-post"><img src="images/tearoff-dry-in-sm.jpg" alt=""><div class="fb-lines"><div class="ph"></div><div class="ph" style="width:60%"></div></div></div>
-        <p class="fb-note">Live Facebook feed appears here once the page URL is added.</p>
+        <p class="fb-note">The live Facebook feed will appear here once the page URL is added.</p>
       </div>
     </div>`;
 }
@@ -103,7 +103,7 @@ if (CONFIG.EMAIL) {
   emailLink.removeAttribute('href');
 }
 
-// Contact form — opens the visitor's email app addressed to CONFIG.EMAIL
+// Contact form: opens the visitor's email app addressed to CONFIG.EMAIL
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
 form.addEventListener('submit', e => {
@@ -115,10 +115,10 @@ form.addEventListener('submit', e => {
   if (!ok) { note.innerHTML = 'Please add your name and phone number.'; return; }
   const d = Object.fromEntries(new FormData(form));
   if (!CONFIG.EMAIL) {
-    note.innerHTML = `Thanks, ${d.name.split(' ')[0]}! Online requests are almost ready — for now please call <a href="tel:+12037700048">(203) 770-0048</a>.`;
+    note.innerHTML = `Thanks, ${d.name.split(' ')[0]}! Online requests are almost ready. For now, please call <a href="tel:+12037700048">(203) 770-0048</a>.`;
     return;
   }
   const body = `Name: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nService: ${d.service}\n\n${d.message}`;
-  location.href = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent('Estimate request — ' + d.service)}&body=${encodeURIComponent(body)}`;
-  note.innerHTML = 'Opening your email app… or call <a href="tel:+12037700048">(203) 770-0048</a>.';
+  location.href = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent('Estimate request: ' + d.service)}&body=${encodeURIComponent(body)}`;
+  note.innerHTML = 'Opening your email app. You can also call <a href="tel:+12037700048">(203) 770-0048</a>.';
 });
